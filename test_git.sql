@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS TestDB;
+USE TestDB;
+
+CREATE TABLE IF NOT EXISTS Comments (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    message TEXT,
+    PRIMARY KEY(id)
+);

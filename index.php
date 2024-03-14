@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style11.css">
+<link rel="stylesheet" href="20240314_profile/style.css">
 <title>"My Profile-sheet"</title>
 <meta name="discription" content="私のプロフィールページです">
 </head>    
@@ -22,7 +22,7 @@
     </div>
     </div>
 <div>
-    <img src="izumi_photo.jpg"><br>
+    <img src="20240314_profile/izumi_photo.jpg"><br>
 
 
    </div>
