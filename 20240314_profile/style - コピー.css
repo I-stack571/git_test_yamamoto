@@ -1,0 +1,37 @@
+headline{
+    color: darkorange;
+}
+body{
+    background-color:black;   
+    color:white;
+    margin: 0 auto;
+}
+.example{
+        width: 50%;
+        height: auto;    
+}
+p {       
+}
+.greeting{
+    font-size: 50px;
+}
+h2{
+    font-size: small;
+    color: violet;
+}
+img{
+    width:350px;
+    height:414px;  
+}
+#hero dd a {
+    position: ablolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+}
+main a {
+    color: #0091b5;
+    fill: currentColor;
+    text-decoration:underline
+}
