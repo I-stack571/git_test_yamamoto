@@ -1,3 +1,24 @@
+<?php 
+session_start();
+
+// データベース接続情報
+$host = 'localhost';
+$dbname = 'git_test';
+$username = 'root';
+$password = '';
+
+try {
+  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  $stmt = $pdo->query("SELECT * FROM `comments`");
+  $inquiries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  $errorMessage = 'お問い合わせ表示でエラーが発生しました';
+  echo $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -15,7 +36,7 @@
         <div class ="heaser-navi-bar">
             <ul>
               <li><a href="index.html">home</a></li>
-              <li><a href="another information.html">Other</a></li>
+              <li><a href="20240314_profile/another information.html">Other</a></li>
               
             </ul>
         </div>
@@ -70,6 +91,24 @@
 
     <input type="submit" value="送信">
 </form>
+<?php if (!empty($errorMessage)): ?>
+      <p style="color: red;"><?php echo $errorMsg; ?></p>
+    <?php else: ?>
+      <table>
+        <tr>
+          <th>送信日時</th>
+          <th>お名前</th>
+          <th>コメント</th>
+        </tr>
+        <?php foreach ($inquiries as $inquiry): ?>
+        <tr>
+          <td><?= htmlspecialchars(($inquiry['name'])) ?></td>
+          <td><?= htmlspecialchars(($inquiry['email'])) ?></td>
+          <td><?= htmlspecialchars(($inquiry['message'])) ?></td>
+        </tr>
+        <?php endforeach; ?>
+      </table>
+    <?php endif; ?>
 
 </body>
 </html>

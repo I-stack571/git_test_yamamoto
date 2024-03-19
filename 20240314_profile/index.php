@@ -1,10 +1,16 @@
 <?php
     // データベース接続情報
     $host = 'localhost';
-    $db   = 'TestDB';
-    $user = 'username';
-    $pass = 'password';
+    $db   = 'git_test';
+    $user = 'root';
+    $pass = '';
     $charset = 'utf8mb4';
+
+    // フォームから送信されたデータを取得
+$nickname = $_POST['nickname'];
+$email = $_POST['email'];
+$content = $_POST['content'];
+
 
     // PDOでデータベースに接続
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -20,15 +26,17 @@
     $email = $_POST['email'];
     $message = $_POST['message'];
 
+
     // SQLクエリの準備
-    $sql = "INSERT INTO Comments (name, email, message) VALUES (:name, :email, :message)";
-    $stmt = $pdo->prepare($sql);
 
     // パラメータをバインド
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':message', $message);
 
-    // SQLクエリの実行
-    $stmt->execute();
+    // // SQLクエリの実行
+    // $stmt->execute();
+//     $sql = 'INSERT INTO `survey`(`nickname`, `email`, `content`) VALUES (:nickname, :email, :content)';
+// $stmt = $dbh->prepare($sql);
+// $stmt->bindParam(':nickname', $nickname, PDO::PARAM_STR);
+// $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+// $stmt->bindParam(':content', $content, PDO::PARAM_STR);
+// $stmt->execute();
 ?>
