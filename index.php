@@ -3,7 +3,7 @@ session_start();
 
 // データベース接続情報
 $host = 'localhost';
-$dbname = 'git_test';
+$dbname = 'testdb';
 $username = 'root';
 $password = '';
 
@@ -76,7 +76,20 @@ try {
 </section>
 </ul>
   </div>
+  <section class="Profile">
+       <div class="img_container">
+           <img class="frame" src="Jidori.jpg" alt="">
+       </div>
+       <div class="text_container">
+           <p class="Name">ジソウスイッチ6期生 サブ講師 宮下 志大</p>
+           どうも！最近第三の目が開眼しそうな宮下です！ <br>
+           趣味は競馬で、好きな馬はエフフォーリア、ドウデュースです！<br>
+           オススメのレースはやっぱり<a href="https://youtu.be/iFHXutgs0MQ?si=pr8YOCs7PQkzqcMF">2021年 天皇賞秋</a>と<a href="https://youtu.be/B51PM7I54Us?si=ABXkAQTtWrAsBWGf">2022年 日本ダービー</a>ですね！<br>
+           ちょっとでも競馬に興味があったら気軽に連絡ください！<br>
+           一緒に競馬場に行きましょう！
+       </div>
 
+   </section> 
 
 <!-- お問い合わせフォーム -->
 <form action="submit_contact.php" method="post">
@@ -85,6 +98,11 @@ try {
 
     <label for="email">メールアドレス：</label><br>
     <input type="email" id="email" name="email" required><br><br>
+    宛先：<br><select name="subject" id="Atesaki">
+     <option value=""></option>
+     <option value="宮下">宮下</option>
+     <option value="山本">山本</option>
+    </select><br><br>
 
     <label for="message">お問い合わせ内容：</label><br>
     <textarea id="message" name="message" rows="4" required></textarea><br><br>
@@ -96,15 +114,16 @@ try {
     <?php else: ?>
       <table>
         <tr>
-          <th>送信日時</th>
+       
           <th>お名前</th>
+          <th>宛先</th>
           <th>コメント</th>
         </tr>
         <?php foreach ($inquiries as $inquiry): ?>
         <tr>
           <td><?= htmlspecialchars(($inquiry['name'])) ?></td>
-          <td><?= htmlspecialchars(($inquiry['email'])) ?></td>
-          <td><?= htmlspecialchars(($inquiry['message'])) ?></td>
+          <td><?= htmlspecialchars(($inquiry['subject'])) ?></td>
+          <td><?= htmlspecialchars(($inquiry['comment'])) ?></td>
         </tr>
         <?php endforeach; ?>
       </table>

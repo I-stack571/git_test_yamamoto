@@ -35,3 +35,21 @@ main a {
     fill: currentColor;
     text-decoration:underline
 }
+.frame{
+    width: 50vh;
+}
+.text_container{
+
+    background-color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 5%;
+    padding-bottom: 10%;
+    border-radius: 50px;
+    font-size: 25px;
+    line-height: 50px;
+}
+.Name{
+    text-align: center;
+    font-weight: bold;
+}

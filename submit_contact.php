@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost'; // XAMPPのデフォルト
-$dbname = 'git_test'; // データベース名
+$dbname = 'testdb'; // データベース名
 $user = 'root'; // XAMPPのデフォルトユーザー名
 $password = ''; // XAMPPのデフォルトパスワードは空
 
@@ -14,13 +14,14 @@ try {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
+    $subject = $_POST['subject'];
     
     // SQL文を準備
-    $sql = "INSERT INTO comments (name, email, message) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO comments (name,address,comment,subject) VALUES (?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
     
     // パラメータをバインドして実行
-    $stmt->execute([$name, $email, $message]);
+    $stmt->execute([$name, $email, $message,$subject]);
     
     echo "お問い合わせありがとうございます。";
     } catch (PDOException $e) {
@@ -33,12 +34,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
-
+    $subject = htmlspecialchars($_POST['subject']);
     // 入力値を確認するために表示（実際のアプリケーションでは使用しないでください）
     echo "<p>受け取った情報：</p>";
     echo "<p>名前: $name</p>";
+    echo "<p>宛先: $subject</p>";
     echo "<p>メールアドレス: $email</p>";
     echo "<p>メッセージ: $message</p>";
+    echo "<a href='./index.php'>戻る</a>";
 
     // 実際にはここでメールを送信したり、データベースに保存したりする
 }
